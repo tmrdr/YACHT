@@ -16,28 +16,62 @@ body {
 }
 td {
   border: 1px solid black;
-  padding: 1.5em;
+  padding: 1.9em;
 }
 th {
   border: 1px solid black;
-  padding: 1.5em;
+  padding: 1.9em;
 }
 #highScore{
   width:8em;
   height: 2em;
   border: 2px solid black;
+  margin-bottom: 1em;
 }
 #diceBox{
-  background-color: grey;
+  background-color: white;
+  border: 2px solid black;
   height: 20em;
   width: 20em;
+  z-index: -1;
 }
 .dice {
   height: 3em;
   width: 3em;
-  background-color: white;
   border: 2px solid black;
+  background-color: white;
   margin: 5px;
+  border-radius: 10px;
+}
+.oneface{
+  background: url("../images/one.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.twoface{
+  background: url("../images/two.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.threeface{
+  background: url("../images/three.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.fourface{
+  background: url("../images/four.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.fiveface{
+  background: url("../images/five.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.sixface{
+  background: url("../images/six.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 #roll {
   margin: 2em;
