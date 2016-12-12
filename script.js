@@ -43,6 +43,9 @@ function rollDice(){
     die4: random(),
     die5: random()
   };
+if (die1 == die2 == die3 == die4 == die5){
+  $("#yacht").text(50).addClass("redtext");
+}else{}
 
 
 //count up number of numbers and add dice faces
@@ -87,22 +90,40 @@ function rollDice(){
 //display on scorecard
   if(ones !== 0 ){
   $("#ones").text(ones).addClass("redtext");
+} else {
+  $("#ones").text("");
 }
+
   if(twos !== 0){
   $("#twos").text(twos).addClass("redtext");
+} else {
+  $("#twos").text("");
 }
+
   if (threes !== 0){
   $("#threes").text(threes).addClass("redtext");
+} else {
+  $("#threes").text("");
 }
+
   if (fours !== 0){
   $("#fours").text(fours).addClass("redtext");
+} else {
+  $("#fours").text("");
 }
+
   if (fives !== 0){
   $("#fives").text(fives).addClass("redtext");
+} else {
+  $("#fives").text("");
 }
+
   if (sixes !== 0){
   $("#sixes").text(sixes).addClass("redtext");
+} else {
+  $("#sixes").text("");
 }
+
 }
 
 
