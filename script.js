@@ -85,13 +85,24 @@ function rollDice(){
   console.log(ones, twos, threes, fours, fives, sixes);
 
 //display on scorecard
-
+  if(ones !== 0 ){
   $("#ones").text(ones).addClass("redtext");
+}
+  if(twos !== 0){
   $("#twos").text(twos).addClass("redtext");
+}
+  if (threes !== 0){
   $("#threes").text(threes).addClass("redtext");
+}
+  if (fours !== 0){
   $("#fours").text(fours).addClass("redtext");
+}
+  if (fives !== 0){
   $("#fives").text(fives).addClass("redtext");
+}
+  if (sixes !== 0){
   $("#sixes").text(sixes).addClass("redtext");
+}
 }
 
 
@@ -106,12 +117,12 @@ function reset(){
   var die4 = $("#die4").removeClass("oneface twoface threeface fiveface sixface").addClass("fourface");
   var die5 = $("#die5").removeClass("oneface twoface threeface fourface sixface").addClass("fiveface");
 
-  $("#ones").text("0").removeClass("redtext");
-  $("#twos").text("0").removeClass("redtext");
-  $("#threes").text("0").removeClass("redtext");
-  $("#fours").text("0").removeClass("redtext");
-  $("#fives").text("0").removeClass("redtext");
-  $("#sixes").text("0").removeClass("redtext");
+  $("#ones").text("").removeClass("redtext");
+  $("#twos").text("").removeClass("redtext");
+  $("#threes").text("").removeClass("redtext");
+  $("#fours").text("").removeClass("redtext");
+  $("#fives").text("").removeClass("redtext");
+  $("#sixes").text("").removeClass("redtext");
 }
 
 //go to rules page

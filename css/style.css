@@ -17,6 +17,7 @@ body {
 td {
   border: 1px solid black;
   padding: 1.9em;
+  font-weight: bold;
 }
 th {
   border: 1px solid black;
