@@ -106,12 +106,12 @@ function reset(){
   var die4 = $("#die4").removeClass("oneface twoface threeface fiveface sixface").addClass("fourface");
   var die5 = $("#die5").removeClass("oneface twoface threeface fourface sixface").addClass("fiveface");
 
-  $("#ones").removeClass("redtext");
-  $("#twos").removeClass("redtext");
-  $("#threes").removeClass("redtext");
-  $("#fours").removeClass("redtext");
-  $("#fives").removeClass("redtext");
-  $("#sixes").removeClass("redtext");
+  $("#ones").text("0").removeClass("redtext");
+  $("#twos").text("0").removeClass("redtext");
+  $("#threes").text("0").removeClass("redtext");
+  $("#fours").text("0").removeClass("redtext");
+  $("#fives").text("0").removeClass("redtext");
+  $("#sixes").text("0").removeClass("redtext");
 }
 
 //go to rules page
