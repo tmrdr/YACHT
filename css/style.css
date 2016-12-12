@@ -73,6 +73,9 @@ th {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.redtext {
+  color: red;
+}
 #roll {
   margin: 2em;
   width: 9em;

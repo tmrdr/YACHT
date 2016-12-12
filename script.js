@@ -44,29 +44,57 @@ function rollDice(){
     die5: random()
   };
 
-  console.log(die1, die2, die3, die4, die5);
 
-  for (i=1; i<7; i++){
+//count up number of numbers and add dice faces
+  var ones = 0;
+  var twos = 0;
+  var threes = 0;
+  var fours = 0;
+  var fives = 0;
+  var sixes = 0;
+
+  for (i=1; i<6; i++){
     var die = $("#die" + i);
     var roll = dice["die" + i];
 
     if (roll == 1) {
       die.addClass("oneface");
+      ones++;
     } else if (roll == 2) {
       die.addClass("twoface");
+      twos++;
     } else if (roll == 3) {
       die.addClass("threeface");
+      threes++;
     } else if (roll == 4) {
       die.addClass("fourface");
+      fours++;
     } else if (roll == 5) {
       die.addClass("fiveface");
+      fives++;
     } else if (roll == 6) {
       die.addClass("sixface");
+      sixes++;
     }
-
-
   }
+  twos = (twos *2);
+  threes = (threes *3);
+  fours = (fours * 4);
+  fives = (fives * 5);
+  sixes = (sixes * 6);
+  console.log(ones, twos, threes, fours, fives, sixes);
+
+//display on scorecard
+
+  $("#ones").text(ones).addClass("redtext");
+  $("#twos").text(twos).addClass("redtext");
+  $("#threes").text(threes).addClass("redtext");
+  $("#fours").text(fours).addClass("redtext");
+  $("#fives").text(fives).addClass("redtext");
+  $("#sixes").text(sixes).addClass("redtext");
 }
+
+
 
 //reset
 $("#reset").click(reset);
@@ -77,6 +105,13 @@ function reset(){
   var die3 = $("#die3").removeClass("oneface twoface fourface fiveface sixface").addClass("threeface");
   var die4 = $("#die4").removeClass("oneface twoface threeface fiveface sixface").addClass("fourface");
   var die5 = $("#die5").removeClass("oneface twoface threeface fourface sixface").addClass("fiveface");
+
+  $("#ones").removeClass("redtext");
+  $("#twos").removeClass("redtext");
+  $("#threes").removeClass("redtext");
+  $("#fours").removeClass("redtext");
+  $("#fives").removeClass("redtext");
+  $("#sixes").removeClass("redtext");
 }
 
 //go to rules page
