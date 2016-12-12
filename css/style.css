@@ -3,9 +3,9 @@ body {
 
 }
 #title {
-  font-size: 4em;
+  font-size: 7em;
   font-style: italic;
-  font-weight: bold;
+  font-weight: 800;
   color: red;
 }
 #menu {
