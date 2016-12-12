@@ -1,3 +1,45 @@
-h1 {
+body {
+  text-align: center;
+
+}
+#title {
+  font-size: 4em;
+  font-style: italic;
+  font-weight: bold;
   color: red;
+}
+#menu {
+  margin-bottom: 2em;
+}
+#scoreCard {
+  border: 1px solid black;
+}
+td {
+  border: 1px solid black;
+  padding: 1.5em;
+}
+th {
+  border: 1px solid black;
+  padding: 1.5em;
+}
+#highScore{
+  width:8em;
+  height: 2em;
+  border: 2px solid black;
+}
+#diceBox{
+  background-color: grey;
+  height: 20em;
+  width: 20em;
+}
+.dice {
+  height: 3em;
+  width: 3em;
+  background-color: white;
+  border: 2px solid black;
+  margin: 5px;
+}
+#roll {
+  margin: 2em;
+  width: 9em;
 }

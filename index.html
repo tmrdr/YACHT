@@ -20,70 +20,70 @@
 </head>
 
 <body>
-    <div id="container">
+    <div class="container">
+      <div class="row">
 
-        <div id="header">
-            <div id="title">YACHT</div>
-            <div id="menu">
-                <button>New Game</button>
-                <button>Rules</button>
-            </div>
-        </div>
+              <div id="title">YACHT</div>
+              <div id="menu">
+                  <button>New Game</button>
+                  <button>Rules</button>
+              </div>
+
+      </div>
 
 
-        <div id="gameBoard">
-          
-            <div id="leftSide">
-                <table id="scoreCard">
-                    <tr>
-                        <th></th>
-                        <td>Score</td>
-                    </tr>
-                    <tr id="ones">
-                        <th>Ones</th>
-                        <td></td>
-                    </tr>
-                    <tr id="twos">
-                        <th>Twos</th>
-                        <td></td>
-                    </tr>
-                    <tr id="threes">
-                        <th>Threes</th>
-                        <td></td>
-                    </tr>
-                    <tr id="fours">
-                        <th>Fours</th>
-                        <td></td>
-                    </tr>
-                    <tr id="fives">
-                        <th>Fives</th>
-                        <td></td>
-                    </tr>
-                    <tr id="sixes">
-                        <th>Sixes</th>
-                        <td></td>
-                    </tr>
-                    <tr id="yacht">
-                        <th>YACHT</th>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
+      <div id="gameBoard" class="row">
+          <div class="col-xs-4 col-xs-offset-3">
+              <table id="scoreCard" class="table table-striped">
+                  <tr>
+                      <th></th>
+                      <td>Score</td>
+                  </tr>
+                  <tr id="ones">
+                      <th>Ones</th>
+                      <td></td>
+                  </tr>
+                  <tr id="twos">
+                      <th>Twos</th>
+                      <td></td>
+                  </tr>
+                  <tr id="threes">
+                      <th>Threes</th>
+                      <td></td>
+                  </tr>
+                  <tr id="fours">
+                      <th>Fours</th>
+                      <td></td>
+                  </tr>
+                  <tr id="fives">
+                      <th>Fives</th>
+                      <td></td>
+                  </tr>
+                  <tr id="sixes">
+                      <th>Sixes</th>
+                      <td></td>
+                  </tr>
+                  <tr id="yacht">
+                      <th>YACHT</th>
+                      <td></td>
+                  </tr>
+              </table>
+          </div>
 
-            <div id="rightSide">
-                <div id="highScore"></div>
+          <div class="col-xs-5">
+              <div id="highScore">High Score <span id="topScore">0</span></div>
 
-                <div id="diceBox">
-                    <div id="die1" class="dice"></div>
-                    <div id="die2" class="dice"></div>
-                    <div id="die3" class="dice"></div>
-                    <div id="die4" class="dice"></div>
-                    <div id="die5" class="dice"></div>
-                </div>
+              <div id="diceBox">
+                  <div id="die1" class="dice"></div>
+                  <div id="die2" class="dice"></div>
+                  <div id="die3" class="dice"></div>
+                  <div id="die4" class="dice"></div>
+                  <div id="die5" class="dice"></div>
+              </div>
 
-                <button id="roll">ROLL</button>
+              <button id="roll">ROLL</button>
 
-            </div>
+          </div>
 
         </div>
 
