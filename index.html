@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,10 +17,82 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <h1>css loaded</h1>
+</head>
 
+<body>
+    <div id="container">
+
+        <div id="header">
+            <div id="title">YACHT</div>
+            <div id="menu">
+                <button>New Game</button>
+                <button>Rules</button>
+            </div>
+        </div>
+
+
+        <div id="gameBoard">
+          
+            <div id="leftSide">
+                <table id="scoreCard">
+                    <tr>
+                        <th></th>
+                        <td>Score</td>
+                    </tr>
+                    <tr id="ones">
+                        <th>Ones</th>
+                        <td></td>
+                    </tr>
+                    <tr id="twos">
+                        <th>Twos</th>
+                        <td></td>
+                    </tr>
+                    <tr id="threes">
+                        <th>Threes</th>
+                        <td></td>
+                    </tr>
+                    <tr id="fours">
+                        <th>Fours</th>
+                        <td></td>
+                    </tr>
+                    <tr id="fives">
+                        <th>Fives</th>
+                        <td></td>
+                    </tr>
+                    <tr id="sixes">
+                        <th>Sixes</th>
+                        <td></td>
+                    </tr>
+                    <tr id="yacht">
+                        <th>YACHT</th>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="rightSide">
+                <div id="highScore"></div>
+
+                <div id="diceBox">
+                    <div id="die1" class="dice"></div>
+                    <div id="die2" class="dice"></div>
+                    <div id="die3" class="dice"></div>
+                    <div id="die4" class="dice"></div>
+                    <div id="die5" class="dice"></div>
+                </div>
+
+                <button id="roll">ROLL</button>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </div>
 
 
 
@@ -32,5 +105,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
-  </body>
+</body>
+
 </html>
