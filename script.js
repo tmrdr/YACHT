@@ -68,4 +68,23 @@ function rollDice(){
   }
 }
 
-///compare dice
+//reset
+$("#reset").click(reset);
+function reset(){
+  console.log("reset");
+  var die1 = $("#die1").removeClass("twoface threeface fourface fiveface sixface").addClass("oneface");
+  var die2 = $("#die2").removeClass("oneface threeface fourface fiveface sixface").addClass("twoface");
+  var die3 = $("#die3").removeClass("oneface twoface fourface fiveface sixface").addClass("threeface");
+  var die4 = $("#die4").removeClass("oneface twoface threeface fiveface sixface").addClass("fourface");
+  var die5 = $("#die5").removeClass("oneface twoface threeface fourface sixface").addClass("fiveface");
+}
+
+//go to rules page
+$("#rules").click(function(){
+  location.href = "rules.html";
+});
+
+//go back
+$("#back").click(function(){
+  location.href = "index.html";
+});
