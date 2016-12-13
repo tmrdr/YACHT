@@ -1,5 +1,13 @@
+@keyframes color_change {
+  0% { background-color: rgb(207, 207, 214); }
+25% { background-color: rgb(199, 193, 201); }
+50% { background-color: rgb(225, 228, 226); }
+75% { background-color: rgb(241, 240, 230); }
+100% { background-color: rgb(223, 215, 222); }
+}
 body {
   text-align: center;
+  animation: color_change 60s infinite alternate;
 }
 a {
   text-decoration: none;
@@ -16,6 +24,7 @@ a {
 }
 #scoreCard {
   border: 1px solid black;
+  background-color: white;
 }
 td {
   border: 1px solid black;
@@ -31,6 +40,7 @@ th {
   height: 2em;
   border: 2px solid black;
   margin-bottom: 1em;
+  background-color: white;
 }
 #diceBox{
   background-color: white;
