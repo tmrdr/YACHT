@@ -32,7 +32,7 @@ th {
 #diceBox{
   background-color: white;
   border: 2px solid black;
-  height: 20em;
+  height: 19.4em;
   width: 20em;
   z-index: -1;
 }
@@ -79,9 +79,21 @@ th {
   color: red;
 }
 #roll {
-  margin: 2em;
+  margin: 1em;
   width: 9em;
 }
+.rotate{
+  transform: rotate(40deg);
+}
+.rotate2{
+  transform: rotate(20deg);
+}
+.rotate3{
+  transform: rotate(-20deg);
+}
+
+
+
 .checked {
   color: black;
 }

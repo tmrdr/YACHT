@@ -37,12 +37,15 @@ function rollDice(){
   var die5 = $("#die5").removeClass("oneface twoface threeface fourface fiveface sixface");
 
 //animate rolling
-$(die1).animate({marginLeft: (Math.random()*2)* 100});
-$(die2).animate({marginLeft: (Math.random()*2)* 100});
-$(die3).animate({marginLeft: (Math.random()*2)* 100});
-$(die4).animate({marginLeft: (Math.random()*2)* 100});
-$(die5).animate({marginLeft: (Math.random()*2)* 100});
+function diceAction(){
+ die1.animate({marginLeft: (Math.random()*2)* 100}, 150).addClass("rotate");
+ die2.animate({marginLeft: (Math.random()*2.3)* 100}, 150);
+ die3.animate({marginLeft: (Math.random()*2)* 100}, 150).addClass("rotate2");
+ die4.animate({marginLeft: (Math.random()*2.3)* 100}, 150);
+ die5.animate({marginLeft: (Math.random()*2)* 100}, 150).addClass("rotate3");
+}
 
+diceAction();
 
 
   var dice = {
@@ -148,11 +151,13 @@ function lockin(){
 $("#reset").click(reset);
 function reset(){
   console.log("reset");
-  var die1 = $("#die1").removeClass("twoface threeface fourface fiveface sixface").addClass("oneface");
+
+  //reset dice
+  var die1 = $("#die1").removeClass("twoface threeface fourface fiveface sixface rotate").addClass("oneface");
   var die2 = $("#die2").removeClass("oneface threeface fourface fiveface sixface").addClass("twoface");
-  var die3 = $("#die3").removeClass("oneface twoface fourface fiveface sixface").addClass("threeface");
+  var die3 = $("#die3").removeClass("oneface twoface fourface fiveface sixface rotate2").addClass("threeface");
   var die4 = $("#die4").removeClass("oneface twoface threeface fiveface sixface").addClass("fourface");
-  var die5 = $("#die5").removeClass("oneface twoface threeface fourface sixface").addClass("fiveface");
+  var die5 = $("#die5").removeClass("oneface twoface threeface fourface sixface rotate3").addClass("fiveface");
 
   $(die1).animate({marginLeft: 5});
   $(die2).animate({marginLeft: 5});
@@ -160,6 +165,7 @@ function reset(){
   $(die4).animate({marginLeft: 5});
   $(die5).animate({marginLeft: 5});
 
+  //reset board
   $("#ones").text("").removeClass("redtext");
   $("#twos").text("").removeClass("redtext");
   $("#threes").text("").removeClass("redtext");
@@ -178,6 +184,11 @@ $("#back").click(function(){
   location.href = "index.html";
 });
 
+
+//dice animation
+function diceAction(){
+
+}
 
 /// TO DO tuesday:
 
