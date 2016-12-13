@@ -2,6 +2,9 @@ body {
   text-align: center;
 
 }
+
+
+
 #title {
   font-size: 7em;
   font-style: italic;
@@ -45,32 +48,32 @@ th {
   border-radius: 10px;
   display: block;
 }
-.oneface{
+.face1{
   background: url("../images/one.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.twoface{
+.face2{
   background: url("../images/two.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.threeface{
+.face3{
   background: url("../images/three.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.fourface{
+.face4{
   background: url("../images/four.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.fiveface{
+.face5{
   background: url("../images/five.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.sixface{
+.face6{
   background: url("../images/six.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -92,8 +95,11 @@ th {
   transform: rotate(-20deg);
 }
 
-
-
 .checked {
   color: black;
+}
+.locked{
+}
+.active{
+  
 }
