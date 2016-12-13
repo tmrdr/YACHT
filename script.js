@@ -36,6 +36,15 @@ function rollDice(){
   var die4 = $("#die4").removeClass("oneface twoface threeface fourface fiveface sixface");
   var die5 = $("#die5").removeClass("oneface twoface threeface fourface fiveface sixface");
 
+//animate rolling
+$(die1).animate({marginLeft: (Math.random()*2)* 100});
+$(die2).animate({marginLeft: (Math.random()*2)* 100});
+$(die3).animate({marginLeft: (Math.random()*2)* 100});
+$(die4).animate({marginLeft: (Math.random()*2)* 100});
+$(die5).animate({marginLeft: (Math.random()*2)* 100});
+
+
+
   var dice = {
     die1: random(),
     die2: random(),
@@ -43,6 +52,8 @@ function rollDice(){
     die4: random(),
     die5: random()
   };
+
+//check if yacht
 if (die1 == die2 == die3 == die4 == die5){
   $("#yacht").text(50).addClass("redtext");
 }else{}
@@ -126,6 +137,11 @@ if (die1 == die2 == die3 == die4 == die5){
 
 }
 
+//lock in score
+function lockin(){
+
+}
+
 
 
 //reset
@@ -137,6 +153,12 @@ function reset(){
   var die3 = $("#die3").removeClass("oneface twoface fourface fiveface sixface").addClass("threeface");
   var die4 = $("#die4").removeClass("oneface twoface threeface fiveface sixface").addClass("fourface");
   var die5 = $("#die5").removeClass("oneface twoface threeface fourface sixface").addClass("fiveface");
+
+  $(die1).animate({marginLeft: 5});
+  $(die2).animate({marginLeft: 5});
+  $(die3).animate({marginLeft: 5});
+  $(die4).animate({marginLeft: 5});
+  $(die5).animate({marginLeft: 5});
 
   $("#ones").text("").removeClass("redtext");
   $("#twos").text("").removeClass("redtext");
@@ -155,3 +177,12 @@ $("#rules").click(function(){
 $("#back").click(function(){
   location.href = "index.html";
 });
+
+
+/// TO DO tuesday:
+
+/// add held function that will disable dice from being rolled
+
+// able to click score to confirm, and will not be over written on  next roll
+
+//animate dice spinning

@@ -43,6 +43,7 @@ th {
   background-color: white;
   margin: 5px;
   border-radius: 10px;
+  display: block;
 }
 .oneface{
   background: url("../images/one.png");
@@ -80,4 +81,7 @@ th {
 #roll {
   margin: 2em;
   width: 9em;
+}
+.checked {
+  color: black;
 }
