@@ -94,6 +94,7 @@ function resetDie(id, dieFace) {
   var die = $(id);
   die.removeClass("face1 face2 face3 face4 face5 face6 rotate rotate2 rotate3 held");
   die.addClass(dieFace);
+  die.addClass("active");
   die.animate({marginLeft: 5});
 }
 
@@ -103,11 +104,11 @@ function reset(){
   console.log("reset");
 
   //reset dice
-  resetDie("#die1", "face1", "active");
-  resetDie("#die2", "face2", "active");
-  resetDie("#die3", "face3", "active");
-  resetDie("#die4", "face4", "active");
-  resetDie("#die5", "face5", "active");
+  resetDie("#die1", "face1");
+  resetDie("#die2", "face2");
+  resetDie("#die3", "face3");
+  resetDie("#die4", "face4");
+  resetDie("#die5", "face5");
 
   //reset board
   $("#ones").text("").removeClass("redtext");
@@ -117,17 +118,6 @@ function reset(){
   $("#fives").text("").removeClass("redtext");
   $("#sixes").text("").removeClass("redtext");
 }
-
-//go to rules page
-$("#rules").click(function(){
-  location.href = "rules.html";
-});
-
-//go back
-$("#back").click(function(){
-  location.href = "index.html";
-});
-
 
 $(".dice").click(function(ev){
   var die = $(ev.target);
