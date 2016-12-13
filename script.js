@@ -145,7 +145,12 @@ function lockin(){
 
 }
 
-
+function resetDie(id, dieFace) {
+  var die = $(id);
+  die.removeClass("oneface twoface threeface fourface fiveface sixface rotate rotate2 rotate3");
+  die.addClass(dieFace);
+  die.animate({marginLeft: 5});
+}
 
 //reset
 $("#reset").click(reset);
@@ -153,17 +158,11 @@ function reset(){
   console.log("reset");
 
   //reset dice
-  var die1 = $("#die1").removeClass("twoface threeface fourface fiveface sixface rotate").addClass("oneface");
-  var die2 = $("#die2").removeClass("oneface threeface fourface fiveface sixface").addClass("twoface");
-  var die3 = $("#die3").removeClass("oneface twoface fourface fiveface sixface rotate2").addClass("threeface");
-  var die4 = $("#die4").removeClass("oneface twoface threeface fiveface sixface").addClass("fourface");
-  var die5 = $("#die5").removeClass("oneface twoface threeface fourface sixface rotate3").addClass("fiveface");
-
-  $(die1).animate({marginLeft: 5});
-  $(die2).animate({marginLeft: 5});
-  $(die3).animate({marginLeft: 5});
-  $(die4).animate({marginLeft: 5});
-  $(die5).animate({marginLeft: 5});
+  resetDie("#die1", "oneface");
+  resetDie("#die2", "twoface");
+  resetDie("#die3", "threeface");
+  resetDie("#die4", "fourface");
+  resetDie("#die5", "fiveface");
 
   //reset board
   $("#ones").text("").removeClass("redtext");
