@@ -13,7 +13,7 @@ function rollDie(id) {
   var die = $(id);
   if (die.hasClass("active")){
     die.removeClass("face1 face2 face3 face4 face5 face6");
-    die.animate({marginLeft: (Math.random()*2.3)* 100}, 150);
+    die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
     var roll = random(die);
     die.addClass("face" + roll);
     return roll;
@@ -90,16 +90,9 @@ function displayScores(rolls) {
 }
 
 
-
-
-//lock in score
-function lockin(){
-
-}
-
 function resetDie(id, dieFace) {
   var die = $(id);
-  die.removeClass("face1 face2 face3 face4 face5 face6 rotate rotate2 rotate3");
+  die.removeClass("face1 face2 face3 face4 face5 face6 rotate rotate2 rotate3 held");
   die.addClass(dieFace);
   die.animate({marginLeft: 5});
 }
@@ -136,10 +129,18 @@ $("#back").click(function(){
 });
 
 
-//dice animation
-function diceAction(){
+$(".dice").click(function(ev){
+  var die = $(ev.target);
+  if (die.hasClass("active")){
+    die.removeClass("active");
+    die.addClass("held");
+    die.animate({marginLeft: 5});
+  } else if(die.hasClass("held")){
+    die.removeClass("held");
+    die.addClass("active");
+  }
+});
 
-}
 
 /// TO DO tuesday:
 

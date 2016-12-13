@@ -1,10 +1,6 @@
 body {
   text-align: center;
-
 }
-
-
-
 #title {
   font-size: 7em;
   font-style: italic;
@@ -98,8 +94,10 @@ th {
 .checked {
   color: black;
 }
-.locked{
+.held{
+  border: 2px solid red;
+  box-shadow: 5px 5px 5px lightblue;
 }
 .active{
-  
+
 }
