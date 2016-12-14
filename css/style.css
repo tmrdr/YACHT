@@ -7,7 +7,7 @@
 }
 body {
   text-align: center;
-  animation: color_change 60s infinite alternate;
+  animation: color_change 45s infinite alternate;
 }
 a {
   text-decoration: none;
@@ -112,6 +112,7 @@ th {
   border: 2px solid red;
   box-shadow: 0px 0px 10px 5px lightblue;
 }
-.active{
-
+.active{  /* for dice */
+}
+.inplay{ /* for scores */  
 }

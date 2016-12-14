@@ -43,10 +43,7 @@ function rollEachDie() {
 }
 
 
-//check if yacht
-if (die1 == die2 == die3 == die4 == die5){
-  $("#yacht").text(50).addClass("redtext");
-}else{}
+
 
 
 //count up number of numbers and add dice faces
@@ -60,8 +57,9 @@ function displayScores(rolls) {
   console.log(ones, twos, threes, fours, fives, sixes);
 
 //display on scorecard
-  if(ones !== 0){
+  if(ones !== 0){ // & card is in play
     $("#ones").text(ones).addClass("redtext");
+    // lockin function here
   } else {
     $("#ones").text("");
   }
@@ -96,6 +94,10 @@ function displayScores(rolls) {
     $("#sixes").text("");
   }
 }
+
+
+
+
 
 
 function resetDie(id, dieFace) {
@@ -142,6 +144,11 @@ $(".dice").click(function(ev){
 
 /// TO DO tuesday:
 
-/// add held function that will disable dice from being rolled
-
 // able to click score to confirm, and will not be over written on  next roll
+
+
+
+//check if yacht
+if (die1 == die2 == die3 == die4 == die5){
+  $("#yacht").text(50).addClass("redtext");
+}else{}
