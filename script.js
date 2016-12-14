@@ -53,8 +53,16 @@ var inPlay = {
   "threes": -1,
   "fours": -1,
   "fives": -1,
-  "sixes": -1
+  "sixes": -1,
+  "yacht": -1
 };
+
+
+
+
+
+
+
 
 function getLocked(number){
   return inPlay[number];
@@ -62,20 +70,21 @@ function getLocked(number){
 
 
 function setLocked(number, value){
+  value = parseInt(value, 10);
   inPlay[number] = value;
 }
 
 
 function displayScores(rolls) {
-  console.log(inPlay);
-  console.log(getLocked("ones"));
   var ones = getLocked("ones") < 0 ? rolls[1] : getLocked("ones");
   var twos = getLocked("twos") < 0 ? (rolls[2] *2) : getLocked("twos");
   var threes = getLocked("threes") < 0 ? (rolls[3] *3) :getLocked("threes");
   var fours = getLocked("fours") < 0 ? (rolls[4] * 4): getLocked("fours");
   var fives = getLocked("fives") < 0 ? (rolls[5] * 5): getLocked("fives");
   var sixes = getLocked("sixes") < 0 ? (rolls[6] * 6): getLocked("sixes");
-  console.log(ones, twos, threes, fours, fives, sixes);
+  var yacht = getLocked("yacht") < 0 ? (50) : getLocked("yacht");
+  var total = (getLocked("ones") + getLocked("twos") + getLocked("threes") + getLocked("fours") + getLocked("fives") + getLocked("sixes"));
+  console.log(total);
 
 //display on scorecard
   if(ones > 0){ // & card is in play
@@ -116,11 +125,24 @@ function displayScores(rolls) {
   } else {
     $("#sixes").text("");
   }
+
+  if (yachts > 0){
+    $("yachts").text(yachts);
+  } else {
+    $("yachts").text("");
+  }
+
+  if (total > 0){
+    $("#total").text(total);
+  }else{
+    $("#total").text("");
+  }
+
 }
+
 
 $(".inplay").click(function(){
   console.log("inplay fired");
-  console.log($(this)[0].id);
   lockin($(this)[0].id);
 
 
@@ -129,7 +151,7 @@ $(".inplay").click(function(){
 function lockin(score){
   $("#" + score).removeClass("inplay").addClass("checked");
   setLocked(score, $("#" + score)[0].innerHTML);
-  console.log($("#" + score)[0].innerHTML);
+
    //takes cell out of play and turns text black. also should add value and keep the number from being over written by roll
 }
 
@@ -157,12 +179,12 @@ function reset(){
   resetDie("#die5", "face5");
 
   //reset board
-  $("#ones").text("").removeClass("redtext").addClass("inplay");
-  $("#twos").text("").removeClass("redtext").addClass("inplay");
-  $("#threes").text("").removeClass("redtext").addClass("inplay");
-  $("#fours").text("").removeClass("redtext").addClass("inplay");
-  $("#fives").text("").removeClass("redtext").addClass("inplay");
-  $("#sixes").text("").removeClass("redtext").addClass("inplay");
+  $("#ones").text("").addClass("inplay");
+  $("#twos").text("").addClass("inplay");
+  $("#threes").text("").addClass("inplay");
+  $("#fours").text("").addClass("inplay");
+  $("#fives").text("").addClass("inplay");
+  $("#sixes").text("").addClass("inplay");
 }
 
 $(".dice").click(function(ev){
@@ -178,13 +200,12 @@ $(".dice").click(function(ev){
 });
 
 
-/// TO DO tuesday:
 
-// able to click score to confirm, and will not be over written on  next roll
+
 
 
 
 //check if yacht
-if (die1 == die2 == die3 == die4 == die5){
-  $("#yacht").text(50).addClass("redtext");
-}else{}
+// if ((roll[0] == roll[1] == roll[2] == roll[3] == roll[4] && roll[i] !== 0)){
+//   $("#yachts").text(50).addClass("clicked");
+// }else{}
