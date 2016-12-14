@@ -47,55 +47,91 @@ function rollEachDie() {
 
 
 //count up number of numbers and add dice faces
+var inPlay = {
+  "ones": -1,
+  "twos": -1,
+  "threes": -1,
+  "fours": -1,
+  "fives": -1,
+  "sixes": -1
+};
+
+function getLocked(number){
+  return inPlay[number];
+}
+
+
+function setLocked(number, value){
+  inPlay[number] = value;
+}
+
+
 function displayScores(rolls) {
-  var ones = rolls[1];
-  var twos = (rolls[2] *2);
-  var threes = (rolls[3] *3);
-  var fours = (rolls[4] * 4);
-  var fives = (rolls[5] * 5);
-  var sixes = (rolls[6] * 6);
+  console.log(inPlay);
+  console.log(getLocked("ones"));
+  var ones = getLocked("ones") < 0 ? rolls[1] : getLocked("ones");
+  var twos = getLocked("twos") < 0 ? (rolls[2] *2) : getLocked("twos");
+  var threes = getLocked("threes") < 0 ? (rolls[3] *3) :getLocked("threes");
+  var fours = getLocked("fours") < 0 ? (rolls[4] * 4): getLocked("fours");
+  var fives = getLocked("fives") < 0 ? (rolls[5] * 5): getLocked("fives");
+  var sixes = getLocked("sixes") < 0 ? (rolls[6] * 6): getLocked("sixes");
   console.log(ones, twos, threes, fours, fives, sixes);
 
 //display on scorecard
-  if(ones !== 0){ // & card is in play
-    $("#ones").text(ones).addClass("redtext");
+  if(ones > 0){ // & card is in play
+    $("#ones").text(ones);
     // lockin function here
   } else {
     $("#ones").text("");
   }
 
-  if(twos !== 0){
-    $("#twos").text(twos).addClass("redtext");
+  if(twos > 0){
+    $("#twos").text(twos);
+
   } else {
     $("#twos").text("");
   }
 
-  if (threes !== 0){
-    $("#threes").text(threes).addClass("redtext");
+  if (threes > 0){
+    $("#threes").text(threes);
+
   } else {
     $("#threes").text("");
   }
 
-  if (fours !== 0){
-    $("#fours").text(fours).addClass("redtext");
+  if (fours > 0){
+    $("#fours").text(fours);
   } else {
     $("#fours").text("");
   }
 
-  if (fives !== 0){
-    $("#fives").text(fives).addClass("redtext");
+  if (fives > 0){
+    $("#fives").text(fives);
   } else {
     $("#fives").text("");
   }
 
-  if (sixes !== 0){
-    $("#sixes").text(sixes).addClass("redtext");
+  if (sixes > 0){
+    $("#sixes").text(sixes);
   } else {
     $("#sixes").text("");
   }
 }
 
+$(".inplay").click(function(){
+  console.log("inplay fired");
+  console.log($(this)[0].id);
+  lockin($(this)[0].id);
 
+
+});
+
+function lockin(score){
+  $("#" + score).removeClass("inplay").addClass("checked");
+  setLocked(score, $("#" + score)[0].innerHTML);
+  console.log($("#" + score)[0].innerHTML);
+   //takes cell out of play and turns text black. also should add value and keep the number from being over written by roll
+}
 
 
 
@@ -121,12 +157,12 @@ function reset(){
   resetDie("#die5", "face5");
 
   //reset board
-  $("#ones").text("").removeClass("redtext");
-  $("#twos").text("").removeClass("redtext");
-  $("#threes").text("").removeClass("redtext");
-  $("#fours").text("").removeClass("redtext");
-  $("#fives").text("").removeClass("redtext");
-  $("#sixes").text("").removeClass("redtext");
+  $("#ones").text("").removeClass("redtext").addClass("inplay");
+  $("#twos").text("").removeClass("redtext").addClass("inplay");
+  $("#threes").text("").removeClass("redtext").addClass("inplay");
+  $("#fours").text("").removeClass("redtext").addClass("inplay");
+  $("#fives").text("").removeClass("redtext").addClass("inplay");
+  $("#sixes").text("").removeClass("redtext").addClass("inplay");
 }
 
 $(".dice").click(function(ev){
