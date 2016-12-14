@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 reset();
 
+var turn = 0;
+
+
 ///dice roll random numbers
 function random(die){
   die = Math.ceil(Math.random() * 6);
@@ -24,6 +27,7 @@ function rollDie(id) {
   }  if ($("#die5").hasClass("active")){
     $("#die5").addClass("rotate3");
   }
+      turn++;
     return roll;
   }
 }
