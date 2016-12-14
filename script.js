@@ -3,6 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 reset();
 
+var rollcounter = 0;
+
+
+function endTurn() {
+  rollcounter = 0;
+  resetDie();
+  $(".inplay").text("");
+
+}
+
+
 ///dice roll random numbers
 function random(die){
   die = Math.ceil(Math.random() * 6);
@@ -32,6 +43,11 @@ function rollDie(id) {
 $("#roll").click(rollEachDie);
 
 function rollEachDie() {
+  rollcounter++;
+  if (rollcounter > 3){
+    console.log("turn ended");
+    endTurn();
+  } else {
   var rolls = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0};
   for (var i = 0; i < 6; i++) {
     var roll = rollDie("#die" + i);
@@ -39,7 +55,7 @@ function rollEachDie() {
   }
 
   displayScores(rolls);
-
+  }
 }
 
 
@@ -144,11 +160,13 @@ function displayScores(rolls) {
 $(".inplay").click(function(){
   console.log("inplay fired");
   lockin($(this)[0].id);
+  endTurn();
 
 
 });
 
 function lockin(score){
+  rollcounter = 0;
   $("#" + score).removeClass("inplay").addClass("checked");
   setLocked(score, $("#" + score)[0].innerHTML);
 
@@ -170,6 +188,17 @@ function resetDie(id, dieFace) {
 $("#reset").click(reset);
 function reset(){
   console.log("reset");
+  rollcounter = 0;
+  inPlay = {
+    "ones": -1,
+    "twos": -1,
+    "threes": -1,
+    "fours": -1,
+    "fives": -1,
+    "sixes": -1,
+    "yacht": -1
+  };
+
 
   //reset dice
   resetDie("#die1", "face1");
