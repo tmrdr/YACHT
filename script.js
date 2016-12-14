@@ -16,6 +16,14 @@ function rollDie(id) {
     die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
     var roll = random(die);
     die.addClass("face" + roll);
+    // adds tilt
+    if ($("#die1").hasClass("active")){
+    $("#die1").addClass("rotate");
+  }  if ($("#die3").hasClass("active")){
+    $("#die3").addClass("rotate2");
+  }  if ($("#die5").hasClass("active")){
+    $("#die5").addClass("rotate3");
+  }
     return roll;
   }
 }
@@ -122,7 +130,7 @@ function reset(){
 $(".dice").click(function(ev){
   var die = $(ev.target);
   if (die.hasClass("active")){
-    die.removeClass("active");
+    die.removeClass("active rotate rotate2 rotate3");
     die.addClass("held");
     die.animate({marginLeft: 5});
   } else if(die.hasClass("held")){
