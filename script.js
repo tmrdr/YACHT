@@ -14,7 +14,8 @@ function endTurn() {
   resetDie("#die4", "face4");
   resetDie("#die5", "face5");
   $(".inplay").text("");
-
+  $("#roll").prop("disabled",false);
+  $("#roll").text("ROLL");
 }
 
 
@@ -48,6 +49,16 @@ $("#roll").click(rollEachDie);
 
 function rollEachDie() {
   rollcounter++;
+  if (rollcounter == 1){
+    $("#roll").text("2 rolls left");
+  }
+  if (rollcounter == 2){
+    $("#roll").text("1 roll left");
+  }
+  if (rollcounter == 3){
+    $("#roll").prop("disabled",true);
+    $("#roll").text("No rolls left");
+  }
   if (rollcounter > 3){
     console.log("turn ended");
     endTurn();
@@ -204,6 +215,8 @@ function reset(){
     "yacht": -1
   };
 
+  $("#roll").prop("disabled",false);
+  $("#roll").text("ROLL");
 
   //reset dice
   resetDie("#die1", "face1");
