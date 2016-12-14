@@ -8,7 +8,11 @@ var rollcounter = 0;
 
 function endTurn() {
   rollcounter = 0;
-  resetDie();
+  resetDie("#die1", "face1");
+  resetDie("#die2", "face2");
+  resetDie("#die3", "face3");
+  resetDie("#die4", "face4");
+  resetDie("#die5", "face5");
   $(".inplay").text("");
 
 }
@@ -189,6 +193,7 @@ $("#reset").click(reset);
 function reset(){
   console.log("reset");
   rollcounter = 0;
+  $("#total").text("");
   inPlay = {
     "ones": -1,
     "twos": -1,
