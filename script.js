@@ -27,10 +27,13 @@ function random(die){
 
 function rollDie(id) {
   var die = $(id);
-  if (die.hasClass("active")){
+  if (die.hasClass("held")){
+    return parseInt(die.attr("data-value"), 10);
+  } else if (die.hasClass("active")){
     die.removeClass("face1 face2 face3 face4 face5 face6");
     die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
     var roll = random(die);
+    die.attr("data-value", roll);
     die.addClass("face" + roll);
     // adds tilt
     if ($("#die1").hasClass("active")){
