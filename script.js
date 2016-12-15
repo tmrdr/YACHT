@@ -4,10 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
 reset();
 
 
-var turn = 0;
-
-var rollcounter = 0;
-
 
 function endTurn() {
   rollcounter = 0;
