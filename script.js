@@ -82,13 +82,13 @@ function rollEachDie() {
 
 //count up number of numbers and add dice faces
 var inPlay = {
-  "ones": -1,
-  "twos": -1,
-  "threes": -1,
-  "fours": -1,
-  "fives": -1,
-  "sixes": -1,
-  "yacht": -1
+  "ones": 0,
+  "twos": 0,
+  "threes": 0,
+  "fours": 0,
+  "fives": 0,
+  "sixes": 0,
+  // "yacht": -1
 };
 
 
@@ -110,20 +110,19 @@ function setLocked(number, value){
 
 
 function displayScores(rolls) {
-  var ones = getLocked("ones") < 0 ? rolls[1] : getLocked("ones");
-  var twos = getLocked("twos") < 0 ? (rolls[2] *2) : getLocked("twos");
-  var threes = getLocked("threes") < 0 ? (rolls[3] *3) :getLocked("threes");
-  var fours = getLocked("fours") < 0 ? (rolls[4] * 4): getLocked("fours");
-  var fives = getLocked("fives") < 0 ? (rolls[5] * 5): getLocked("fives");
-  var sixes = getLocked("sixes") < 0 ? (rolls[6] * 6): getLocked("sixes");
-  var yacht = getLocked("yacht") < 0 ? (50) : getLocked("yacht");
+  var ones = getLocked("ones") <= 0 ? rolls[1] : getLocked("ones");
+  var twos = getLocked("twos") <= 0 ? (rolls[2] *2) : getLocked("twos");
+  var threes = getLocked("threes") <= 0 ? (rolls[3] *3) :getLocked("threes");
+  var fours = getLocked("fours") <= 0 ? (rolls[4] * 4): getLocked("fours");
+  var fives = getLocked("fives") <= 0 ? (rolls[5] * 5): getLocked("fives");
+  var sixes = getLocked("sixes") <= 0 ? (rolls[6] * 6): getLocked("sixes");
+  var yacht = getLocked("yacht") <= 0 ? (50) : getLocked("yacht");
   var total = (getLocked("ones") + getLocked("twos") + getLocked("threes") + getLocked("fours") + getLocked("fives") + getLocked("sixes"));
   console.log(total);
 
 //display on scorecard
   if(ones > 0){ // & card is in play
     $("#ones").text(ones);
-    // lockin function here
   } else {
     $("#ones").text("");
   }
@@ -160,11 +159,11 @@ function displayScores(rolls) {
     $("#sixes").text("");
   }
 
-  if (yachts > 0){
-    $("yachts").text(yachts);
-  } else {
-    $("yachts").text("");
-  }
+  // if (yachts > 0){
+  //   $("yachts").text(yachts);
+  // } else {
+  //   $("yachts").text("");
+  // }
 
   if (total > 0){
     $("#total").text(total);
