@@ -12,3 +12,9 @@ if (total > $("#topScore").text){
   $("#topScore").text(total);
   localStorage.setItem(best);
 }
+
+
+//check if yacht
+// if ((roll[0] == roll[1] == roll[2] == roll[3] == roll[4] && roll[i] !== 0)){
+//   $("#yachts").text(50).addClass("clicked");
+// }else{}

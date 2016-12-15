@@ -254,7 +254,8 @@ $(".dice").click(function(ev){
 
 
 
-//check if yacht
-// if ((roll[0] == roll[1] == roll[2] == roll[3] == roll[4] && roll[i] !== 0)){
-//   $("#yachts").text(50).addClass("clicked");
-// }else{}
+// TO DO:
+// fix 0'd out bug
+// fix one behind with total score, or hide until end
+// connect top score w local storage
+// add yacht and other special sections
