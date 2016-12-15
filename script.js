@@ -50,11 +50,22 @@ function rollDie(id) {
   if (die.hasClass("held")){
     return parseInt(die.attr("data-value"), 10); //keeps held dice score
   } else if (die.hasClass("active")){
-    die.removeClass("face1 face2 face3 face4 face5 face6");
+
     die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
-    var roll = random(die);
-    die.attr("data-value", roll);
-    die.addClass("face" + roll);
+
+
+    var timer = setInterval(function(){
+      var roll = random(die);
+      die.attr("data-value", roll);
+      die.removeClass("face1 face2 face3 face4 face5 face6");
+      die.addClass("face" + roll);
+    }, 20);
+    setTimeout(function(){
+      clearInterval(timer);
+    }, 250);
+
+
+
     // adds tilt
     if ($("#die1").hasClass("active")){
     $("#die1").addClass("rotate");
@@ -66,6 +77,9 @@ function rollDie(id) {
     return roll;
   }
 }
+
+
+
 
 /// roll button rolls dice
 $("#roll").click(rollEachDie);
@@ -184,7 +198,12 @@ function displayScores(rolls) {
 }
 
 
-$(".inplay").click(function(){
+$(".inplay").click(function(event){
+  if (event.target.textContent === "") {
+    event.target.textContent = "0";
+    endTurn();
+    return;
+  }
   console.log("inplay fired");
   lockin($(this)[0].id);
   endTurn();

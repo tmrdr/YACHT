@@ -20,6 +20,13 @@ body {
   height: 50px;
   font-size: 13pt;
 }
+#reset {
+  font-size: 12pt;
+}
+#reset:hover {
+  color: rgb(42, 86, 125);
+}
+
 h1 {
   font-size: 30pt;
 }
@@ -114,6 +121,10 @@ th {
 #roll {
   margin: 1em;
   width: 9em;
+  
+}
+#roll:hover {
+  color: rgb(42, 86, 125);
 }
 .rotate{
   transform: rotate(40deg);
