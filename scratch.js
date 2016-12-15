@@ -7,7 +7,8 @@
 // }
 
 
-// if (total > $("#topScore").text){
-//   var best = total;
-//   $("#topScore").text(total);
-//   localStorage.setItem(best);
+if (total > $("#topScore").text){
+  var best = total;
+  $("#topScore").text(total);
+  localStorage.setItem(best);
+}
