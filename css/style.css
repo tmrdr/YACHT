@@ -121,7 +121,8 @@ th {
 #roll {
   margin: 1em;
   width: 9em;
-  
+  position: absolute;
+  right: 255px;
 }
 #roll:hover {
   color: rgb(42, 86, 125);

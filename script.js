@@ -50,10 +50,9 @@ function rollDie(id) {
   if (die.hasClass("held")){
     return parseInt(die.attr("data-value"), 10); //keeps held dice score
   } else if (die.hasClass("active")){
-
+    //slides
     die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
-
-
+    //flips
     var timer = setInterval(function(){
       var roll = random(die);
       die.attr("data-value", roll);
@@ -64,8 +63,8 @@ function rollDie(id) {
       clearInterval(timer);
     }, 250);
 
-
-
+    //uh oh yacht bug
+    
     // adds tilt
     if ($("#die1").hasClass("active")){
     $("#die1").addClass("rotate");
