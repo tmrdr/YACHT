@@ -78,6 +78,9 @@ th {
   height: 19.4em;
   width: 20em;
   z-index: -1;
+  /*background: url("../images/wood.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;*/
 }
 .dice {
   height: 3em;
@@ -121,8 +124,8 @@ th {
 #roll {
   margin: 1em;
   width: 9em;
-  position: absolute;
-  right: 255px;
+  /*position: absolute;
+  right: 255px;*/
 }
 #roll:hover {
   color: rgb(42, 86, 125);

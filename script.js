@@ -50,21 +50,22 @@ function rollDie(id) {
   if (die.hasClass("held")){
     return parseInt(die.attr("data-value"), 10); //keeps held dice score
   } else if (die.hasClass("active")){
-    //slides
+
     die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
-    //flips
+
+
     var timer = setInterval(function(){
       var roll = random(die);
-      die.attr("data-value", roll);
+      die.attr("data-value", roll); /// /// / // / // // / // // // / // //  // /
       die.removeClass("face1 face2 face3 face4 face5 face6");
-      die.addClass("face" + roll);
+      die.addClass("face" + roll); // make variable?
     }, 20);
     setTimeout(function(){
       clearInterval(timer);
     }, 250);
 
-    //uh oh yacht bug
-    
+
+
     // adds tilt
     if ($("#die1").hasClass("active")){
     $("#die1").addClass("rotate");
@@ -73,7 +74,7 @@ function rollDie(id) {
   }  if ($("#die5").hasClass("active")){
     $("#die5").addClass("rotate3");
   }
-    return roll;
+    return roll; // call it here?
   }
 }
 
@@ -133,7 +134,7 @@ function displayScores(rolls) {
   var yacht = getLocked("yacht") <= 0 ? 0 : getLocked("yacht");
 
   console.log(die1.getAttribute("data-value"), die2.getAttribute("data-value"), die3.getAttribute("data-value"),die4.getAttribute("data-value"),die5.getAttribute("data-value"));
-  if (die1.getAttribute("data-value") == die2.getAttribute("data-value") &&
+  if (die1.getAttribute("data-value") !== null && die1.getAttribute("data-value") == die2.getAttribute("data-value") &&
       die1.getAttribute("data-value") == die3.getAttribute("data-value") &&
       die1.getAttribute("data-value") == die4.getAttribute("data-value") &&
       die1.getAttribute("data-value") == die5.getAttribute("data-value")){
@@ -199,8 +200,6 @@ function displayScores(rolls) {
 
 $(".inplay").click(function(event){
   if (event.target.textContent === "") {
-    event.target.textContent = "0";
-    endTurn();
     return;
   }
   console.log("inplay fired");
@@ -211,6 +210,9 @@ $(".inplay").click(function(event){
 });
 
 function lockin(score){
+  if ($("#" + score).hasClass("checked")){
+    return;
+  }
   rollcounter = 0;
   turncount++;
   $("#" + score).removeClass("inplay").addClass("checked");
@@ -307,4 +309,3 @@ $(".dice").click(function(ev){
 // fix 0'd out bug
 // fix one behind with total score, or hide until end
 // connect top score w local storage
-// add yacht and other special sections
