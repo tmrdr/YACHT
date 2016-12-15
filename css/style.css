@@ -9,6 +9,29 @@ body {
   text-align: center;
   animation: color_change 45s infinite alternate;
 }
+#container{
+  width: 500px;
+  text-align: center;
+  margin: 0 auto;
+}
+#back {
+  margin-bottom: 30px;
+  width: 100px;
+  height: 50px;
+  font-size: 13pt;
+}
+h1 {
+  font-size: 30pt;
+}
+
+p {
+  font-size: 16pt;
+  background-color: white;
+  padding: 50px;
+  border: 2px solid black;
+}#rules {
+  font-size: 12pt;
+}
 a {
   text-decoration: none;
   color: black;
