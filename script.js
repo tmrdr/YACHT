@@ -1,12 +1,28 @@
+var rollcounter = 0;
+var turncount = 0;
+var inPlay = {
+  "ones": 0,
+  "twos": 0,
+  "threes": 0,
+  "fours": 0,
+  "fives": 0,
+  "sixes": 0,
+  "yacht": 0
+};
+
 document.addEventListener('DOMContentLoaded', function() {
   console.log("DOM loaded");
+  reset();
 });
-reset();
 
-var rollcounter = 0;
+
+
 
 
 function endTurn() {
+  if (turncount >= 7){
+    endGame();
+  }
   rollcounter = 0;
   resetDie("#die1", "face1");
   resetDie("#die2", "face2");
@@ -16,6 +32,10 @@ function endTurn() {
   $(".inplay").text("");
   $("#roll").prop("disabled",false);
   $("#roll").text("ROLL");
+}
+
+function endGame(){
+
 }
 
 
@@ -79,25 +99,6 @@ function rollEachDie() {
 
 
 
-
-//count up number of numbers and add dice faces
-var inPlay = {
-  "ones": 0,
-  "twos": 0,
-  "threes": 0,
-  "fours": 0,
-  "fives": 0,
-  "sixes": 0,
-  "yacht": 0
-};
-
-
-
-
-
-
-
-
 function getLocked(number){
   return inPlay[number];
 }
@@ -117,12 +118,17 @@ function displayScores(rolls) {
   var fives = getLocked("fives") <= 0 ? (rolls[5] * 5): getLocked("fives");
   var sixes = getLocked("sixes") <= 0 ? (rolls[6] * 6): getLocked("sixes");
   var yacht = getLocked("yacht") <= 0 ? 0 : getLocked("yacht");
-  var total = (getLocked("ones") + getLocked("twos") + getLocked("threes") + getLocked("fours") + getLocked("fives") + getLocked("sixes"));
+
   console.log(die1.getAttribute("data-value"), die2.getAttribute("data-value"), die3.getAttribute("data-value"),die4.getAttribute("data-value"),die5.getAttribute("data-value"));
-  if (die1.getAttribute("data-value") == die2.getAttribute("data-value") == die3.getAttribute("data-value") == die4.getAttribute("data-value") == die5.getAttribute("data-value")){
-    yacht = 50;
+  if (die1.getAttribute("data-value") == die2.getAttribute("data-value") &&
+      die1.getAttribute("data-value") == die3.getAttribute("data-value") &&
+      die1.getAttribute("data-value") == die4.getAttribute("data-value") &&
+      die1.getAttribute("data-value") == die5.getAttribute("data-value")){
+        console.log("if statement rached");
+  yacht = 50;
   }
   console.log(yacht);
+  var total = (getLocked("ones") + getLocked("twos") + getLocked("threes") + getLocked("fours") + getLocked("fives") + getLocked("sixes")) + getLocked("yacht");
 
 //display on scorecard
   if(ones > 0){ // & card is in play
@@ -164,9 +170,9 @@ function displayScores(rolls) {
   }
 
   if (yacht > 0){
-    $("yacht").text(yacht);
+    $("#yacht").text(yacht);
   } else {
-    $("yacht").text("");
+    $("#yacht").text("");
   }
 
   if (total > 0){
@@ -188,11 +194,32 @@ $(".inplay").click(function(){
 
 function lockin(score){
   rollcounter = 0;
+  turncount++;
   $("#" + score).removeClass("inplay").addClass("checked");
-  setLocked(score, $("#" + score)[0].innerHTML);
+  var currentscore = $("#" + score)[0].innerHTML;
+  setLocked(score, currentscore);
+  var currenttotal = $("#total")[0].innerHTML;
+
+  console.log(currenttotal);
+
+  if (currenttotal !== "" && !isNaN(currenttotal)){
+    currenttotal = parseInt(currenttotal);
+    console.log("below isNaN");
+  } else {
+    currenttotal = 0;
+  }
+  if (currentscore !== "" && !isNaN(currentscore)){
+    currentscore = parseInt(currentscore);
+    console.log("below isNaN");
+  } else {
+    currentscore = 0;
+  }
+  var total = currenttotal + currentscore;
+  $("#total").text(total);
+}
 
    //takes cell out of play and turns text black. also should add value and keep the number from being over written by roll
-}
+
 
 
 
@@ -212,13 +239,13 @@ function reset(){
   rollcounter = 0;
   $("#total").text("");
   inPlay = {
-    "ones": -1,
-    "twos": -1,
-    "threes": -1,
-    "fours": -1,
-    "fives": -1,
-    "sixes": -1,
-    "yacht": -1
+    "ones": 0,
+    "twos": 0,
+    "threes": 0,
+    "fours": 0,
+    "fives": 0,
+    "sixes": 0,
+    "yacht": 0
   };
 
   $("#roll").prop("disabled",false);
