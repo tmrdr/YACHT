@@ -28,7 +28,7 @@ function random(die){
 function rollDie(id) {
   var die = $(id);
   if (die.hasClass("held")){
-    return parseInt(die.attr("data-value"), 10);
+    return parseInt(die.attr("data-value"), 10); //keeps held dice score
   } else if (die.hasClass("active")){
     die.removeClass("face1 face2 face3 face4 face5 face6");
     die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
@@ -88,7 +88,7 @@ var inPlay = {
   "fours": 0,
   "fives": 0,
   "sixes": 0,
-  // "yacht": -1
+  "yacht": 0
 };
 
 
@@ -116,9 +116,13 @@ function displayScores(rolls) {
   var fours = getLocked("fours") <= 0 ? (rolls[4] * 4): getLocked("fours");
   var fives = getLocked("fives") <= 0 ? (rolls[5] * 5): getLocked("fives");
   var sixes = getLocked("sixes") <= 0 ? (rolls[6] * 6): getLocked("sixes");
-  var yacht = getLocked("yacht") <= 0 ? (50) : getLocked("yacht");
+  var yacht = getLocked("yacht") <= 0 ? 0 : getLocked("yacht");
   var total = (getLocked("ones") + getLocked("twos") + getLocked("threes") + getLocked("fours") + getLocked("fives") + getLocked("sixes"));
-  console.log(total);
+  console.log(die1.getAttribute("data-value"), die2.getAttribute("data-value"), die3.getAttribute("data-value"),die4.getAttribute("data-value"),die5.getAttribute("data-value"));
+  if (die1.getAttribute("data-value") == die2.getAttribute("data-value") == die3.getAttribute("data-value") == die4.getAttribute("data-value") == die5.getAttribute("data-value")){
+    yacht = 50;
+  }
+  console.log(yacht);
 
 //display on scorecard
   if(ones > 0){ // & card is in play
@@ -159,11 +163,11 @@ function displayScores(rolls) {
     $("#sixes").text("");
   }
 
-  // if (yachts > 0){
-  //   $("yachts").text(yachts);
-  // } else {
-  //   $("yachts").text("");
-  // }
+  if (yacht > 0){
+    $("yacht").text(yacht);
+  } else {
+    $("yacht").text("");
+  }
 
   if (total > 0){
     $("#total").text(total);
