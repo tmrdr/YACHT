@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
   reset();
 });
 
-
+// if (turncount >= 1){
+//   endGame();
+// }
 
 
 
 function endTurn() {
-  if (turncount >= 7){
-    endGame();
-  }
+
   rollcounter = 0;
   resetDie("#die1", "face1");
   resetDie("#die2", "face2");
@@ -35,7 +35,8 @@ function endTurn() {
 }
 
 function endGame(){
-
+  $("#roll").prop("disabled",true);
+  $("#roll").text("Game Over");
 }
 
 
@@ -49,23 +50,40 @@ function rollDie(id) {
   var die = $(id);
   if (die.hasClass("held")){
     return parseInt(die.attr("data-value"), 10); //keeps held dice score
-  } else if (die.hasClass("active")){
-    die.removeClass("face1 face2 face3 face4 face5 face6");
-    die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
-    var roll = random(die);
-    die.attr("data-value", roll);
-    die.addClass("face" + roll);
-    // adds tilt
-    if ($("#die1").hasClass("active")){
+  } else if (!die.hasClass("active")){
+    return;
+  }
+
+  die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
+
+  // adds tilt
+  if ($("#die1").hasClass("active")){
     $("#die1").addClass("rotate");
   }  if ($("#die3").hasClass("active")){
     $("#die3").addClass("rotate2");
   }  if ($("#die5").hasClass("active")){
     $("#die5").addClass("rotate3");
   }
-    return roll;
-  }
+
+  var actualRoll = random(die);
+  var timer = setInterval(function(){
+    var roll = random(die);
+    die.attr("data-value", roll); /// /// / // / // // / // // // / // //  // /
+    die.removeClass("face1 face2 face3 face4 face5 face6");
+    die.addClass("face" + roll); // make variable?
+  }, 20);
+  setTimeout(function(){
+    clearInterval(timer);
+    die.attr("data-value", actualRoll); /// /// / // / // // / // // // / // //  // /
+    die.removeClass("face1 face2 face3 face4 face5 face6");
+    die.addClass("face" + actualRoll); // make variable?
+  }, 250);
+
+  return actualRoll;
 }
+
+
+
 
 /// roll button rolls dice
 $("#roll").click(rollEachDie);
@@ -86,13 +104,14 @@ function rollEachDie() {
     console.log("turn ended");
     endTurn();
   } else {
-  var rolls = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0};
-  for (var i = 0; i < 6; i++) {
-    var roll = rollDie("#die" + i);
-    rolls[roll]++;
-  }
 
-  displayScores(rolls);
+    var rolls = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0};
+    for (var i = 0; i < 6; i++) {
+      var roll = rollDie("#die" + i);
+      rolls[roll]++;
+    }
+
+    displayScores(rolls);
   }
 }
 
@@ -120,7 +139,9 @@ function displayScores(rolls) {
   var yacht = getLocked("yacht") <= 0 ? 0 : getLocked("yacht");
 
   console.log(die1.getAttribute("data-value"), die2.getAttribute("data-value"), die3.getAttribute("data-value"),die4.getAttribute("data-value"),die5.getAttribute("data-value"));
-  if (die1.getAttribute("data-value") == die2.getAttribute("data-value") &&
+  if (die1.getAttribute("data-value") !== null &&
+      die1.getAttribute("data-value") !== 0 &&
+      die1.getAttribute("data-value") == die2.getAttribute("data-value") &&
       die1.getAttribute("data-value") == die3.getAttribute("data-value") &&
       die1.getAttribute("data-value") == die4.getAttribute("data-value") &&
       die1.getAttribute("data-value") == die5.getAttribute("data-value")){
@@ -133,58 +154,75 @@ function displayScores(rolls) {
 //display on scorecard
   if(ones > 0){ // & card is in play
     $("#ones").text(ones);
+  }else if ((ones === 0) && (rollcounter == 3)){
+    $("#ones").text(0);
   } else {
     $("#ones").text("");
   }
 
   if(twos > 0){
     $("#twos").text(twos);
-
+  }else if ((twos === 0) && (rollcounter == 3)){
+    $("#twos").text(0);
   } else {
     $("#twos").text("");
   }
 
   if (threes > 0){
     $("#threes").text(threes);
-
+  }else if ((threes === 0) && (rollcounter == 3)){
+    $("#threes").text(0);
   } else {
     $("#threes").text("");
   }
 
   if (fours > 0){
     $("#fours").text(fours);
+  }else if ((fours === 0) && (rollcounter == 3)){
+    $("#fours").text(0);
   } else {
     $("#fours").text("");
   }
 
   if (fives > 0){
     $("#fives").text(fives);
+  }else if ((fives === 0) && (rollcounter == 3)){
+    $("#fives").text(0);
   } else {
     $("#fives").text("");
   }
 
   if (sixes > 0){
     $("#sixes").text(sixes);
+  }else if ((sixes === 0) && (rollcounter == 3)){
+    $("#sixes").text(0);
   } else {
     $("#sixes").text("");
   }
 
   if (yacht > 0){
     $("#yacht").text(yacht);
+  }else if ((yacht === 0) && (rollcounter == 3)){
+    $("#yacht").text(0);
   } else {
     $("#yacht").text("");
   }
 
   if (total > 0){
     $("#total").text(total);
-  }else{
+  }else if (total === 0){
+    $("#total").text(0);
+  } else {
     $("#total").text("");
   }
 
 }
 
 
-$(".inplay").click(function(){
+$(".inplay").click(function(event){
+  if (event.target.textContent === "") {
+    return;
+  }
   console.log("inplay fired");
   lockin($(this)[0].id);
   endTurn();
@@ -193,6 +231,9 @@ $(".inplay").click(function(){
 });
 
 function lockin(score){
+  if ($("#" + score).hasClass("checked")){
+    return;
+  }
   rollcounter = 0;
   turncount++;
   $("#" + score).removeClass("inplay").addClass("checked");
@@ -259,12 +300,12 @@ function reset(){
   resetDie("#die5", "face5");
 
   //reset board
-  $("#ones").text("").addClass("inplay");
-  $("#twos").text("").addClass("inplay");
-  $("#threes").text("").addClass("inplay");
-  $("#fours").text("").addClass("inplay");
-  $("#fives").text("").addClass("inplay");
-  $("#sixes").text("").addClass("inplay");
+  $("#ones").text("").removeClass("checked").addClass("inplay");
+  $("#twos").text("").removeClass("checked").addClass("inplay");
+  $("#threes").text("").removeClass("checked").addClass("inplay");
+  $("#fours").text("").removeClass("checked").addClass("inplay");
+  $("#fives").text("").removeClass("checked").addClass("inplay");
+  $("#sixes").text("").removeClass("checked").addClass("inplay");
 }
 
 $(".dice").click(function(ev){
@@ -286,7 +327,8 @@ $(".dice").click(function(ev){
 
 
 // TO DO:
-// fix 0'd out bug
-// fix one behind with total score, or hide until end
+
+// fix 0 out
+//endgame function
+
 // connect top score w local storage
-// add yacht and other special sections
