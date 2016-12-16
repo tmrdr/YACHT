@@ -49,33 +49,36 @@ function rollDie(id) {
   var die = $(id);
   if (die.hasClass("held")){
     return parseInt(die.attr("data-value"), 10); //keeps held dice score
-  } else if (die.hasClass("active")){
+  } else if (!die.hasClass("active")){
+    return;
+  }
 
-    die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
+  die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
 
-
-    var timer = setInterval(function(){
-      var roll = random(die);
-      die.attr("data-value", roll); /// /// / // / // // / // // // / // //  // /
-      die.removeClass("face1 face2 face3 face4 face5 face6");
-      die.addClass("face" + roll); // make variable?
-    }, 20);
-    setTimeout(function(){
-      clearInterval(timer);
-    }, 250);
-
-
-
-    // adds tilt
-    if ($("#die1").hasClass("active")){
+  // adds tilt
+  if ($("#die1").hasClass("active")){
     $("#die1").addClass("rotate");
   }  if ($("#die3").hasClass("active")){
     $("#die3").addClass("rotate2");
   }  if ($("#die5").hasClass("active")){
     $("#die5").addClass("rotate3");
   }
-    return roll; // call it here?
-  }
+
+  var actualRoll = random(die);
+  var timer = setInterval(function(){
+    var roll = random(die);
+    die.attr("data-value", roll); /// /// / // / // // / // // // / // //  // /
+    die.removeClass("face1 face2 face3 face4 face5 face6");
+    die.addClass("face" + roll); // make variable?
+  }, 20);
+  setTimeout(function(){
+    clearInterval(timer);
+    die.attr("data-value", actualRoll); /// /// / // / // // / // // // / // //  // /
+    die.removeClass("face1 face2 face3 face4 face5 face6");
+    die.addClass("face" + actualRoll); // make variable?
+  }, 250);
+
+  return actualRoll;
 }
 
 
@@ -100,13 +103,14 @@ function rollEachDie() {
     console.log("turn ended");
     endTurn();
   } else {
-  var rolls = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0};
-  for (var i = 0; i < 6; i++) {
-    var roll = rollDie("#die" + i);
-    rolls[roll]++;
-  }
 
-  displayScores(rolls);
+    var rolls = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0};
+    for (var i = 0; i < 6; i++) {
+      var roll = rollDie("#die" + i);
+      rolls[roll]++;
+    }
+
+    displayScores(rolls);
   }
 }
 
@@ -134,7 +138,8 @@ function displayScores(rolls) {
   var yacht = getLocked("yacht") <= 0 ? 0 : getLocked("yacht");
 
   console.log(die1.getAttribute("data-value"), die2.getAttribute("data-value"), die3.getAttribute("data-value"),die4.getAttribute("data-value"),die5.getAttribute("data-value"));
-  if (die1.getAttribute("data-value") !== null && die1.getAttribute("data-value") == die2.getAttribute("data-value") &&
+  if (die1.getAttribute("data-value") !== null &&
+      die1.getAttribute("data-value") == die2.getAttribute("data-value") &&
       die1.getAttribute("data-value") == die3.getAttribute("data-value") &&
       die1.getAttribute("data-value") == die4.getAttribute("data-value") &&
       die1.getAttribute("data-value") == die5.getAttribute("data-value")){
