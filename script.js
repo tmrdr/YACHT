@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
   reset();
 });
 
-
+// if (turncount >= 1){
+//   endGame();
+// }
 
 
 
 function endTurn() {
-  if (turncount >= 7){
-    endGame();
-  }
+
   rollcounter = 0;
   resetDie("#die1", "face1");
   resetDie("#die2", "face2");
@@ -35,7 +35,8 @@ function endTurn() {
 }
 
 function endGame(){
-
+  $("#roll").prop("disabled",true);
+  $("#roll").text("Game Over");
 }
 
 
@@ -139,6 +140,7 @@ function displayScores(rolls) {
 
   console.log(die1.getAttribute("data-value"), die2.getAttribute("data-value"), die3.getAttribute("data-value"),die4.getAttribute("data-value"),die5.getAttribute("data-value"));
   if (die1.getAttribute("data-value") !== null &&
+      die1.getAttribute("data-value") !== 0 &&
       die1.getAttribute("data-value") == die2.getAttribute("data-value") &&
       die1.getAttribute("data-value") == die3.getAttribute("data-value") &&
       die1.getAttribute("data-value") == die4.getAttribute("data-value") &&
@@ -152,51 +154,65 @@ function displayScores(rolls) {
 //display on scorecard
   if(ones > 0){ // & card is in play
     $("#ones").text(ones);
+  }else if ((ones === 0) && (rollcounter == 3)){
+    $("#ones").text(0);
   } else {
     $("#ones").text("");
   }
 
   if(twos > 0){
     $("#twos").text(twos);
-
+  }else if ((twos === 0) && (rollcounter == 3)){
+    $("#twos").text(0);
   } else {
     $("#twos").text("");
   }
 
   if (threes > 0){
     $("#threes").text(threes);
-
+  }else if ((threes === 0) && (rollcounter == 3)){
+    $("#threes").text(0);
   } else {
     $("#threes").text("");
   }
 
   if (fours > 0){
     $("#fours").text(fours);
+  }else if ((fours === 0) && (rollcounter == 3)){
+    $("#fours").text(0);
   } else {
     $("#fours").text("");
   }
 
   if (fives > 0){
     $("#fives").text(fives);
+  }else if ((fives === 0) && (rollcounter == 3)){
+    $("#fives").text(0);
   } else {
     $("#fives").text("");
   }
 
   if (sixes > 0){
     $("#sixes").text(sixes);
+  }else if ((sixes === 0) && (rollcounter == 3)){
+    $("#sixes").text(0);
   } else {
     $("#sixes").text("");
   }
 
   if (yacht > 0){
     $("#yacht").text(yacht);
+  }else if ((yacht === 0) && (rollcounter == 3)){
+    $("#yacht").text(0);
   } else {
     $("#yacht").text("");
   }
 
   if (total > 0){
     $("#total").text(total);
-  }else{
+  }else if (total === 0){
+    $("#total").text(0);
+  } else {
     $("#total").text("");
   }
 
@@ -311,6 +327,8 @@ $(".dice").click(function(ev){
 
 
 // TO DO:
-// fix 0'd out bug
-// fix one behind with total score, or hide until end
+
+// fix 0 out
+//endgame function
+
 // connect top score w local storage
