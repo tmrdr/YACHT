@@ -284,12 +284,12 @@ function reset(){
   resetDie("#die5", "face5");
 
   //reset board
-  $("#ones").text("").addClass("inplay");
-  $("#twos").text("").addClass("inplay");
-  $("#threes").text("").addClass("inplay");
-  $("#fours").text("").addClass("inplay");
-  $("#fives").text("").addClass("inplay");
-  $("#sixes").text("").addClass("inplay");
+  $("#ones").text("").removeClass("checked").addClass("inplay");
+  $("#twos").text("").removeClass("checked").addClass("inplay");
+  $("#threes").text("").removeClass("checked").addClass("inplay");
+  $("#fours").text("").removeClass("checked").addClass("inplay");
+  $("#fives").text("").removeClass("checked").addClass("inplay");
+  $("#sixes").text("").removeClass("checked").addClass("inplay");
 }
 
 $(".dice").click(function(ev){
