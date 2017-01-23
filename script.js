@@ -54,7 +54,7 @@ function rollDie(id) {
     return;
   }
 
-  die.animate({marginLeft: (Math.random()*2.3)* 100}, 130);
+  die.animate({marginLeft: (Math.random()*2.3)* 100}, 130); //throws
 
   // adds tilt
   if ($("#die1").hasClass("active")){
@@ -65,18 +65,18 @@ function rollDie(id) {
     $("#die5").addClass("rotate3");
   }
 
-  var actualRoll = random(die);
-  var timer = setInterval(function(){
+  var actualRoll = random(die); // real value
+  var timer = setInterval(function(){ // scramble faces
     var roll = random(die);
-    die.attr("data-value", roll); /// /// / // / // // / // // // / // //  // /
+    die.attr("data-value", roll);
     die.removeClass("face1 face2 face3 face4 face5 face6");
-    die.addClass("face" + roll); // make variable?
+    die.addClass("face" + roll);
   }, 20);
   setTimeout(function(){
     clearInterval(timer);
     die.attr("data-value", actualRoll); /// /// / // / // // / // // // / // //  // /
     die.removeClass("face1 face2 face3 face4 face5 face6");
-    die.addClass("face" + actualRoll); // make variable?
+    die.addClass("face" + actualRoll);
   }, 250);
 
   return actualRoll;
@@ -139,6 +139,7 @@ function displayScores(rolls) {
   var yacht = getLocked("yacht") <= 0 ? 0 : getLocked("yacht");
 
   console.log(die1.getAttribute("data-value"), die2.getAttribute("data-value"), die3.getAttribute("data-value"),die4.getAttribute("data-value"),die5.getAttribute("data-value"));
+//check for YACHT
   if (die1.getAttribute("data-value") !== null &&
       die1.getAttribute("data-value") !== 0 &&
       die1.getAttribute("data-value") == die2.getAttribute("data-value") &&
@@ -328,7 +329,7 @@ $(".dice").click(function(ev){
 
 // TO DO:
 
-// fix 0 out
+
 //endgame function
 
 // connect top score w local storage
